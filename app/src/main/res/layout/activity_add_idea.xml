@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="false"
+    tools:context=".ui.addidea.AddIdeaActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="12dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_tittle_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/tittle_view_new_idea"
+                android:textAlignment="center"
+                android:textSize="34sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivNewIdeaImage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="@+id/tv_tittle_view"
+                app:layout_constraintStart_toStartOf="@+id/tv_tittle_view"
+                app:layout_constraintTop_toBottomOf="@+id/tv_tittle_view"
+                app:srcCompat="@mipmap/ic_launcher_round" />
+
+            <Button
+                android:id="@+id/btn_img_select"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#3F51B5"
+                android:text="@string/btn_img_select"
+                app:layout_constraintEnd_toEndOf="@+id/ivNewIdeaImage"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/ivNewIdeaImage"
+                app:layout_constraintTop_toBottomOf="@+id/ivNewIdeaImage" />
+
+            <EditText
+                android:id="@+id/et_new_idea_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:hint="@string/et_input_new_name_idea"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="@+id/btn_img_select"
+                app:layout_constraintStart_toStartOf="@+id/btn_img_select"
+                app:layout_constraintTop_toBottomOf="@+id/btn_img_select" />
+
+            <EditText
+                android:id="@+id/et_new_idea_descrip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="@string/et_new_idea_descrip"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="@+id/et_new_idea_name"
+                app:layout_constraintStart_toStartOf="@+id/et_new_idea_name"
+                app:layout_constraintTop_toBottomOf="@+id/et_new_idea_name" />
+
+            <TextView
+                android:id="@+id/tv_priority_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/tv_priority"
+                app:layout_constraintEnd_toEndOf="@+id/et_new_idea_descrip"
+                app:layout_constraintStart_toStartOf="@+id/et_new_idea_descrip"
+                app:layout_constraintTop_toBottomOf="@+id/et_new_idea_descrip" />
+
+            <RadioGroup
+                android:id="@+id/rg_priority_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:fadingEdge="horizontal"
+                android:orientation="horizontal"
+                app:guidelineUseRtl="false"
+                app:layout_constraintEnd_toEndOf="@+id/tv_priority_info"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_priority_info"
+                app:layout_constraintTop_toBottomOf="@+id/tv_priority_info">
+
+                <RadioButton
+                    android:id="@+id/rb_low"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:text="@string/radio_button_low" />
+
+                <RadioButton
+                    android:id="@+id/rb_middle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/radio_button_middle" />
+
+                <RadioButton
+                    android:id="@+id/rb_high"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/radio_button_high" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btn_save_new_idea"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
+                android:backgroundTint="#B9BBBC"
+                android:clickable="false"
+                android:contextClickable="false"
+                android:enabled="false"
+                android:text="@string/btn_save_new_idea"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/rg_priority_info"
+                app:layout_constraintStart_toStartOf="@+id/rg_priority_info"
+                app:layout_constraintTop_toBottomOf="@+id/rg_priority_info" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</ScrollView>

@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AyllonAplicacionIdeas" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.AyllonAplicacionIdeas" parent="Base.Theme.AyllonAplicacionIdeas" />
+
+    <style name="MyCustomTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/gradient_drawable</item>
+        <item name="android:editTextBackground">@drawable/bg_edit_text</item>
+        <item name="android:editTextStyle">@style/Widget.Material3.TextInputEditText.OutlinedBox</item>
+        <item name="android:statusBarColor">#FC088E98</item>
+    </style>
+
+</resources>

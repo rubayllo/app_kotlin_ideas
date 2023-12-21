@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Ayllon Aplicacion Ideas</string>
+    <string name="tittle_login">Login</string>
+    <string name="insert_name">Nombre de usuario</string>
+    <string name="insert_password">Password</string>
+    <string name="btn_login">Acceder</string>
+    <string name="btn_crear">Crear cuenta</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tittle_register">Crear cuenta</string>
+    <string name="insert_confirm_password">Confimar password</string>
+    <string name="btn_exit">Salir</string>
+    <string name="btn_delete_user">Elimminar cuenta</string>
+    <string name="ideas">Lista</string>
+    <string name="user_data">Cuenta</string>
+    <string name="data_password">"Password: "</string>
+    <string name="data_user">Default name</string>
+    <string name="imagen_user">Imagen de usuario</string>
+    <string name="add_idea">Añadir nueva idea</string>
+    <string name="tittle_view_new_idea">¡Nueva idea!</string>
+    <string name="tv_priority">Prioridad:</string>
+    <string name="radio_button_low">Baja</string>
+    <string name="radio_button_middle">Media</string>
+    <string name="radio_button_high">Alta</string>
+    <string name="btn_save_new_idea">Guardar idea</string>
+    <string name="btn_img_select">Seleccionar imagen</string>
+    <string name="et_input_new_name_idea">Da un nombre a tu idea!</string>
+    <string name="et_new_idea_descrip">¿Sobre qué trata?</string>
+    <string name="btn_delete_idea">Eliminar</string>
+    <string name="tv_tittle_idea_info">Título de la idea</string>
+    <string name="tv_descrip_idea_info">Descripción de la idea</string>
+    <string name="tv_status_idea_info">Estado:</string>
+    <string name="radio_button_pendiente">Pendiente</string>
+    <string name="radio_button_en_progreso">En progreso</string>
+    <string name="radio_button_terminado">Terminado</string>
+    <string name="button_add_detail">Añadir detalle</string>
+    <string name="tv_status">Estado</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ideasDetailsFragment"
+        android:enabled="true"
+        android:icon="@drawable/round_list_24"
+        android:title="@string/ideas"/>
+    <item
+        android:id="@+id/userDataFragment"
+        android:enabled="true"
+        android:icon="@drawable/round_person_24"
+        android:title="@string/user_data"/>
+</menu>

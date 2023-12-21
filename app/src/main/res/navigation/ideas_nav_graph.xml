@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ideas_nav_graph"
+    app:startDestination="@id/ideasDetailsFragment">
+
+    <fragment
+        android:id="@+id/ideasDetailsFragment"
+        android:name="com.utad.ayllonaplicacionideas.ui.ideas.IdeasListFragment"
+        android:label="fragment_ideas_details"
+        tools:layout="@layout/fragment_ideas_list" >
+        <action
+            android:id="@+id/action_ideasDetailsFragment_to_infoIdeaDataFragment"
+            app:destination="@id/infoIdeaDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userDataFragment"
+        android:name="com.utad.ayllonaplicacionideas.ui.ideas.UserDataFragment"
+        android:label="fragment_user_data"
+        tools:layout="@layout/fragment_user_data" />
+    <fragment
+        android:id="@+id/infoIdeaDataFragment"
+        android:name="com.utad.ayllonaplicacionideas.ui.ideas.InfoIdeaDataFragment"
+        android:label="fragment_info_idea_data"
+        tools:layout="@layout/fragment_info_idea_data" >
+        <argument
+            android:name="ideaId"
+            app:argType="integer" />
+    </fragment>
+</navigation>
