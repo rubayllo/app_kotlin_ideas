@@ -12,6 +12,7 @@
         <item name="android:editTextBackground">@drawable/bg_edit_text</item>
         <item name="android:editTextStyle">@style/Widget.Material3.TextInputEditText.OutlinedBox</item>
         <item name="android:statusBarColor">#FC088E98</item>
+        <item name="colorPrimary">@color/blue</item>
     </style>
 
 </resources>

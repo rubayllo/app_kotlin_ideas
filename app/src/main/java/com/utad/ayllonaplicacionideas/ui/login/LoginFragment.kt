@@ -7,9 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.utad.ayllonaplicacionideas.databinding.FragmentLoginBinding
 import com.utad.ayllonaplicacionideas.ui.ideas.IdeasActivity
 import com.utad.ayllonaplicacionideas.model.data_store.DataStoreManager
@@ -36,6 +39,13 @@ class LoginFragment : Fragment() {
 
         userLoginVerify()
 
+        binding.etLoginUser.doAfterTextChanged {
+            buttonEneabled()
+        }
+        binding.etLoginPassword.doAfterTextChanged {
+            buttonEneabled()
+        }
+
         binding.btnSingUp.setOnClickListener {
             goToSingUp()
         }
@@ -43,6 +53,13 @@ class LoginFragment : Fragment() {
         binding.btnSingIn.setOnClickListener {
                 checkLogin()
         }
+    }
+
+    private fun buttonEneabled() {
+        val userName = binding.etLoginUser.text.trim()
+        val userPass = binding.etLoginPassword.text
+
+        binding.btnSingIn.isEnabled = !userName.isNullOrEmpty() && !userPass.isNullOrEmpty()
     }
 
     private fun userLoginVerify() {
@@ -63,15 +80,17 @@ class LoginFragment : Fragment() {
 
         var userName: String? = binding.etLoginUser.text.toString().trim()
         var userPass: String? = binding.etLoginPassword.text.toString()
+        var contadorCorrutina: Int = 0
 
-        if(!userName.isNullOrEmpty() && !userPass.isNullOrEmpty()) {
+        if (!userName.isNullOrEmpty() && !userPass.isNullOrEmpty()) {
             var isNameValid: Boolean? = null
             var isPassValid: Boolean? = null
 
             lifecycleScope.launch(Dispatchers.IO) {
                 DataStoreManager.getUser(requireContext()).collect { user ->
                     isNameValid = user == userName
-                    checkCredentials(isNameValid, isPassValid)
+                    contadorCorrutina+=1
+                    checkCredentials(isNameValid, isPassValid, contadorCorrutina)
                     userName = null
                 }
             }
@@ -79,22 +98,28 @@ class LoginFragment : Fragment() {
             lifecycleScope.launch(Dispatchers.IO) {
                 DataStoreManager.getPassword(requireContext()).collect { pass ->
                     isPassValid = pass == userPass
-                    checkCredentials(isNameValid, isPassValid)
+                    contadorCorrutina+=1
+                    checkCredentials(isNameValid, isPassValid, contadorCorrutina )
                     userPass = null
                 }
             }
         }
     }
 
-
-    private suspend fun checkCredentials(nameValid: Boolean?, passValid: Boolean?) {
+    private suspend fun checkCredentials(nameValid: Boolean?, passValid: Boolean?, contadorCorrutina: Int) {
         if (nameValid == true && passValid == true) {
             DataStoreManager.setLoginCheckIn(requireContext())
             withContext(Dispatchers.Main) {
                 goToPrincipal()
             }
+        } else if(contadorCorrutina==2){
+            withContext(Dispatchers.Main) {
+                Snackbar.make(binding.root, "Usuario o password incorrectos", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
+
 
     private fun goToPrincipal() {
         val intent = Intent(requireContext(), IdeasActivity::class.java)

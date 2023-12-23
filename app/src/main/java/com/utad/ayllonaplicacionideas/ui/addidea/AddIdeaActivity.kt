@@ -70,11 +70,11 @@ class AddIdeaActivity : AppCompatActivity() {
             (binding.rbLow.isChecked || binding.rbMiddle.isChecked || binding.rbHigh.isChecked)
 
         binding.btnSaveNewIdea.isEnabled = (!name.isNullOrBlank() && !descrip.isNullOrBlank() && priority)
-        if (binding.btnSaveNewIdea.isEnabled) {
-            binding.btnSaveNewIdea.setBackgroundColor(Color.parseColor("#3F51B5"))
-        } else {
-            binding.btnSaveNewIdea.setBackgroundColor(Color.parseColor("#B9BBBC"))
-        }
+//        if (binding.btnSaveNewIdea.isEnabled) {
+//            binding.btnSaveNewIdea.setBackgroundColor(Color.parseColor("#3F51B5"))
+//        } else {
+//            binding.btnSaveNewIdea.setBackgroundColor(Color.parseColor("#B9BBBC"))
+//        }
     }
 
     private fun saveInDataBase() {

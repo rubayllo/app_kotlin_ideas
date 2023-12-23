@@ -57,13 +57,6 @@ class RegisterFragment : Fragment() {
         val userPassConfirm = binding.etRegisterPasswordConfirm.text
 
         binding.btnCreateUser.isEnabled = !userName.isNullOrEmpty() && !userPass.isNullOrEmpty() && !userPassConfirm.isNullOrEmpty()
-
-        binding.btnCreateUser.setBackgroundColor(
-            if (binding.btnCreateUser.isEnabled){
-                Color.parseColor("#3070A3")
-            } else {
-                Color.parseColor("#B9BBBC")
-        })
     }
 
     private fun createUser() {
