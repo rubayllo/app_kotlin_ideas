@@ -50,7 +50,9 @@ class LoginFragment : Fragment() {
         }
 
         binding.btnSingUp.setOnClickListener {
-            // Cancelo corrutinas para que no den fallo
+            // Cancelo corrutinas para que no den fallo de quedarse las
+            // variables locales guardadas en caso de meter un usuario y password
+            // erroneos y acto seguido crear usuario con esas mismas credenciales
             lifecycleScope.cancel()
             goToSingUp()
         }
@@ -86,7 +88,7 @@ class LoginFragment : Fragment() {
         var userName: String? = binding.etLoginUser.text.toString().trim()
         var userPass: String? = binding.etLoginPassword.text.toString()
 
-        if (!userName.isNullOrEmpty() && !userPass.isNullOrEmpty()) {
+        if (!userName.isNullOrBlank() && !userPass.isNullOrEmpty()) {
             var isNameValid: Boolean? = null
             var isPassValid: Boolean? = null
 
@@ -94,8 +96,8 @@ class LoginFragment : Fragment() {
                 DataStoreManager.getAllDataUser(requireContext()).collect { pass ->
                     isNameValid = pass.name == userName
                     isPassValid = pass.password == userPass
-                    userName = null
-                    userPass = null
+                    userName = null // A null para que no de problemas de chequeo de login la corrutina
+                    userPass = null // A null para que no de problemas de chequeo de login la corrutina
                     checkCredentials(isNameValid, isPassValid)
                 }
             }
@@ -106,7 +108,6 @@ class LoginFragment : Fragment() {
     private suspend fun checkCredentials(nameValid: Boolean?, passValid: Boolean?) {
         if (nameValid == true && passValid == true) {
             DataStoreManager.setLoginCheckIn(requireContext())
-            // Cancelo la corrutina puesto que no la voy a volver a utilizar
             goToPrincipal()
 
         } else {
