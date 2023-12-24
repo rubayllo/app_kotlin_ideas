@@ -55,6 +55,13 @@ class IdeasListFragment : Fragment() {
         getIdeaFromDataBase()
     }
 
+    private fun setRecyclerView() {
+        // Asigno el layautManager y el adaptador a nuestro RecyclerView
+        binding.rvIdeaList.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.rvIdeaList.adapter = adapter
+    }
+
     private fun getIdeaFromDataBase() {
         lifecycleScope.launch(Dispatchers.IO) {
             val application = (requireActivity().application as MyAplicationRoom)
@@ -64,30 +71,15 @@ class IdeasListFragment : Fragment() {
             }
         }
     }
-
-
-    private fun setRecyclerView() {
-        // Asigno el layautManager y el adaptador a nuestro RecyclerView
-        binding.rvIdeaList.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-
-        binding.rvIdeaList.adapter = adapter
-    }
-
     private fun removeIdea(idea: Idea, position: Int) {
         val application = requireContext().applicationContext as MyAplicationRoom
 
+        // Eliminamos la idea y los detalles de la base de datos y reiniciamos la RyclerView
+        // con la funcion getIdeaFromDataBase()
         lifecycleScope.launch(Dispatchers.IO) {
-            application.room.daoDataBase().deleteIdea(idea)
             application.room.daoDataBase().deleteIdeaWithDetail(idea.id)
-
-            //Eliminamos la idea de la lista de la RyclerView copiando la lista y eliminando la idea seleccionada
-            withContext(Dispatchers.Main) {
-                val newList = mutableListOf<Idea>()
-                newList.addAll(adapter.currentList)
-                newList.removeAt(position)
-                adapter.submitList(newList) //refrescamos la lista
-            }
+            application.room.daoDataBase().deleteIdea(idea)
+            getIdeaFromDataBase()
         }
     }
 

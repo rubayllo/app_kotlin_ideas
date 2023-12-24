@@ -26,7 +26,7 @@ class IdeasListAdapter(
 
     override fun onBindViewHolder(holder: IdeasListViewHolder, position: Int) {
         val idea = getItem(position)
-        Log.d("Estado", "onBindViewHolder: por aqui pasa")
+        Log.d("Estado", "onBindViewHolder: por aquí pasa")
         holder.binding.tvTittleIdea.text = idea.nombre
         holder.binding.tvDescripIdea.text = idea.descripcion
         holder.binding.tvStatus.text = idea.estado
@@ -53,7 +53,6 @@ class IdeasListAdapter(
             removeIdea(idea, position)
         }
     }
-
 
     inner class IdeasListViewHolder(val binding: ItemIdeasListBinding) :
         RecyclerView.ViewHolder(binding.root)

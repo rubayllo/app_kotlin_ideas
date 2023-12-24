@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,9 +44,13 @@ class InfoIdeaDataFragment : Fragment() {
 
         //Recogemos el id que nos envía el fragmento previo
         ideaId = navigationArgs.ideaId
-        setRecyclerView()
 
+        setRecyclerView()
         loadDataBaseInfo()
+
+        binding.etNewDetail.doAfterTextChanged {
+            addButtonEnabled()
+        }
 
         binding.btnAddNewDetail.setOnClickListener {
             if (!binding.etNewDetail.text.isNullOrBlank()) {
@@ -61,6 +66,10 @@ class InfoIdeaDataFragment : Fragment() {
         binding.rbStatusEnProgreso.setOnClickListener { updateIdeaInDataBase() }
         binding.rbStatusTerminado.setOnClickListener { updateIdeaInDataBase() }
 
+    }
+
+    private fun addButtonEnabled() {
+         binding.btnAddNewDetail.isEnabled = !binding.etNewDetail.text.trim().isNullOrBlank()
     }
 
     private fun setRecyclerView() {
@@ -173,14 +182,6 @@ class InfoIdeaDataFragment : Fragment() {
                 lifecycleScope.launch(Dispatchers.IO) {
                     /** Através del Dao elimino el item que he recibido por parámetro en esta función*/
                     application.room.daoDataBase().deleteDetail(detail)
-
-                    //Eliminamos la idea de la lista de la RyclerView copiando la lista y eliminando la idea seleccionada
-                    withContext(Dispatchers.Main) {
-                        val newList = mutableListOf<Detail>()
-                        newList.addAll(adapter.currentList)
-                        newList.removeAt(position)
-                        adapter.submitList(newList) //refrescamos la lista
-                    }
                 }
             }
             .setNegativeButton("Denegar") { dialog, which ->

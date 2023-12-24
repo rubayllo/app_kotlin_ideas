@@ -150,6 +150,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:enabled="false"
                 android:text="@string/button_add_detail"
                 app:layout_constraintEnd_toEndOf="@+id/etNewDetail"
                 app:layout_constraintStart_toStartOf="@+id/etNewDetail"
