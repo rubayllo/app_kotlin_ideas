@@ -94,6 +94,8 @@ class LoginFragment : Fragment() {
                 DataStoreManager.getAllDataUser(requireContext()).collect { pass ->
                     isNameValid = pass.name == userName
                     isPassValid = pass.password == userPass
+                    userName = null
+                    userPass = null
                     checkCredentials(isNameValid, isPassValid)
                 }
             }
