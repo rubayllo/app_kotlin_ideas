@@ -105,7 +105,6 @@ class LoginFragment : Fragment() {
         if (nameValid == true && passValid == true) {
             DataStoreManager.setLoginCheckIn(requireContext())
             // Cancelo la corrutina puesto que no la voy a volver a utilizar
-            lifecycleScope.cancel()
             goToPrincipal()
 
         } else {
